@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+
+    <title>Happy Birthday Khushboo</title>
+    <!-- Font Awesome 6 (free) for cute icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- canvas-confetti for easy and stunning confetti bursts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+    <div class="card">
+        <img src="C:\Users\RAMAN\Downloads\WhatsApp Image 2026-03-18 at 11.19.25 AM.jpeg" alt="Khushboo"
+            class="birthday-image">
+
+        ...
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            /* animated gradient background — dreamy & attractive */
+            background: linear-gradient(135deg, #fbc7d1, #c7b9ff, #b4e0ff, #fbc7d1);
+            background-size: 400% 400%;
+            animation: gradientFlow 18s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* floating icons container (background layer) */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 5px 15px rgba(255, 180, 200, 0.5);
+            animation: floatAround 12s infinite ease-in-out;
+            pointer-events: none;
+            will-change: transform;
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+
+            40% {
+                transform: translateY(-30px) rotate(8deg) scale(1.1);
+            }
+
+            70% {
+                transform: translateY(15px) rotate(-5deg) scale(0.95);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+        }
+
+        /* main content card (above background) */
+        .birthday-card {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            pointer-events: none;
+            /* allow clicks through to buttons but container doesn't block */
+        }
+
+        .card-glass {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 60px 20px 60px 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            pointer-events: auto;
+            animation: cardGlow 4s infinite alternate;
+        }
+
+        .card-glass:hover {
+            transform: scale(1.01);
+            box-shadow: 0 45px 90px rgba(255, 105, 180, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.7) inset;
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow: 0 25px 50px rgba(255, 192, 203, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+            }
+
+            100% {
+                box-shadow: 0 35px 80px rgba(255, 105, 180, 0.6), 0 0 0 4px rgba(255, 240, 150, 0.8) inset;
+            }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.5rem, 12vw, 5rem);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #9b1d5c;
+            text-shadow: 4px 4px 0 #ffd9e8, 8px 8px 10px rgba(255, 100, 150, 0.3);
+            animation: bounceText 2.5s infinite;
+        }
+
+        .name-highlight {
+            display: inline-block;
+            background: linear-gradient(145deg, #ff4d7d, #ffb3c6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 0 #fff, 6px 6px 0 rgba(0, 0, 0, 0.1);
+            font-size: 1.4em;
+            transform: scale(1.1);
+            margin-left: 10px;
+            animation: sparkle 1.8s infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                text-shadow: 2px 2px 0 white, 0 0 10px #ffa6c9;
+            }
+
+            100% {
+                text-shadow: 4px 4px 0 white, 0 0 25px #ff4d6d, 0 0 35px #fff0b5;
+            }
+        }
+
+        @keyframes bounceText {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .birthday-image {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .sub-message {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 600;
+            color: #2d1b3c;
+            background: rgba(255, 240, 245, 0.7);
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            backdrop-filter: blur(5px);
+            margin: 1.2rem 0 1.8rem;
+            box-shadow: 0 5px 15px rgba(252, 196, 219, 0.6);
+            border: 1px solid white;
+        }
+
+        .wish-text {
+            font-size: 1.3rem;
+            color: #3d1f33;
+            margin: 2rem 0 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1.2rem;
+            border-radius: 50px 10px 50px 10px;
+            border-left: 7px solid #ff88a5;
+            transform: rotate(-0.5deg);
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(241, 124, 164, 0.3);
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2.2rem 0 0.8rem;
+        }
+
+        .btn {
+            border: none;
+            background: white;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #a13d63;
+            cursor: pointer;
+            box-shadow: 0 15px 25px -8px rgba(255, 120, 160, 0.6);
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .btn i {
+            font-size: 1.4rem;
+            color: #ff6893;
+        }
+
+        .btn:hover {
+            background: #ffe9f0;
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 25px 35px -5px #ff8da1;
+            border-color: #ff98af;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 8px 15px #ffb6c1;
+        }
+
+        /* special wish reveal box */
+        .special-wish-box {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 40px 8px 40px 8px;
+            border: 3px solid #ffe2f0;
+            box-shadow: 0 15px 30px rgba(199, 21, 133, 0.3);
+            transform: scale(1);
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #740c3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: scale(0.7) translateY(20px);
+            pointer-events: none;
+        }
+
+        .special-wish-box.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .special-wish-box i {
+            font-size: 2.5rem;
+            color: #ff4080;
+            filter: drop-shadow(0 0 8px gold);
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #511c34;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.4rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* Responsive touch */
+        @media (max-width: 500px) {
+            .card-glass {
+                padding: 1.8rem 1rem;
+            }
+
+            .btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .wish-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* little heartbeat for extra love */
+        .heartbeat {
+            display: inline-block;
+            animation: heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            35% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+
+            55% {
+                transform: scale(1);
+            }
+        }
+
+        /* floating gift/balloons randomness will be added by js */
+    </style>
+</head>
+
+<body>
+    <!-- background floating icons container (filled by js) -->
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <!-- main birthday card -->
+    <div class="birthday-card">
+        <div class="card-glass">
+            <h1>
+                Happy Birthday
+                <span class="name-highlight">Khushboo</span>
+            </h1>
+            <div class="sub-message">
+                <i class="fas fa-crown heartbeat" style="color:#f7d44b;"></i>
+                The world smells sweeter because of you
+                <i class="fas fa-crown heartbeat" style="color:#f7d44b;"></i>
+            </div>
+
+            <!-- sweet message block -->
+            <div class="wish-text">
+                <i class="fas fa-star" style="color: #ffb62e;"></i>
+                May your day be filled with petal-soft joy, dazzling smiles, and a touch of magic.
+                <i class="fas fa-star" style="color: #ffb62e;"></i>
+            </div>
+
+            <!-- interactive buttons -->
+            <div class="button-group">
+                <button class="btn" id="confettiBtn"><i class="fas fa-confetti"></i> Celebrate!</button>
+                <button class="btn" id="wishBtn"><i class="fas fa-wand-magic"></i> Special wish</button>
+            </div>
+
+            <!-- hidden wish reveal box -->
+            <div id="specialWish" class="special-wish-box">
+                <i class="fas fa-heart heartbeat"></i>
+                <span>🌟 Happy Birthday, dear Khushboo! ✨ May your life bloom like a thousand flowers 🌸 and your heart
+                    always dance to the rhythm of happiness! 💖</span>
+                <i class="fas fa-heart heartbeat"></i>
+            </div>
+
+            <div class="footer-note">
+                made with <i class="fas fa-heart" style="color:#ff1a4f;"></i> just for you
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // === generate floating background icons (super attractive) ===
+            const floatingContainer = document.getElementById('floatingBg');
+            const iconClasses = [
+                'fa-heart', 'fa-star', 'fa-cake-candles', 'fa-gift', 'fa-balloon',
+                'fa-crown', 'fa-sparkles', 'fa-feather', 'fa-music', 'fa-wand-sparkles',
+                'fa-ribbon', 'fa-candy-cane', 'fa-champagne-glasses', 'fa-birthday-cake',
+                'fa-flower', 'fa-seedling', 'fa-cloud-moon', 'fa-sun', 'fa-gem'
+            ];
+
+            // function to generate random number between min and max
+            const random = (min, max) => Math.random() * (max - min) + min;
+
+            function generateIcons(count = 35) {
+                for (let i = 0; i < count; i++) {
+                    const icon = document.createElement('i');
+                    // pick random icon from list
+                    const randomIcon = iconClasses[Math.floor(Math.random() * iconClasses.length)];
+                    icon.className = `fas ${randomIcon} floating-icon`;
+
+                    // random position (covering full view)
+                    icon.style.left = random(0, 100) + '%';
+                    icon.style.top = random(0, 100) + '%';
+
+                    // random size between 1rem and 3.8rem
+                    const size = random(1.2, 3.8);
+                    icon.style.fontSize = size + 'rem';
+
+                    // random opacity between 0.4 and 0.9 (visible but not overwhelming)
+                    icon.style.opacity = random(0.4, 0.85);
+
+                    // random animation duration between 8s and 22s for variety
+                    const duration = random(8, 22);
+                    icon.style.animationDuration = duration + 's';
+
+                    // random animation delay so they don't all move in sync
+                    const delay = random(0, 12);
+                    icon.style.animationDelay = delay + 's';
+
+                    // give random color hue (pastel range) using hsl
+                    const hue = random(0, 360);
+                    icon.style.color = `hsl(${hue}, 80%, 75%)`; // soft pastel
+                    icon.style.textShadow = `0 0 15px hsl(${hue}, 90%, 70%), 0 5px 10px rgba(0,0,0,0.1)`;
+
+                    floatingContainer.appendChild(icon);
+                }
+            }
+
+            // === confetti functions (using canvas-confetti) ===
+            function shootConfettiBurst() {
+                // left side burst
+                confetti({
+                    particleCount: 120,
+                    spread: 70,
+                    origin: { x: 0.2, y: 0.6 },
+                    startVelocity: 25,
+                    colors: ['#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#a0e7ff']
+                });
+                // right side burst
+                confetti({
+                    particleCount: 120,
+                    spread: 70,
+                    origin: { x: 0.8, y: 0.6 },
+                    startVelocity: 25,
+                    colors: ['#ffb3ba', '#c5a3ff', '#b0e0e6', '#fdeacb', '#fbc0cb']
+                });
+                // center burst after tiny delay
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 150,
+                        spread: 100,
+                        origin: { y: 0.5, x: 0.5 },
+                        startVelocity: 30,
+                        colors: ['#ff8c8c', '#fdd0f2', '#b1e6d1', '#ffe084', '#d4b8ff']
+                    });
+                }, 150);
+                // third burst (smaller, higher)
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 80,
+                        spread: 45,
+                        origin: { y: 0.3, x: 0.4 },
+                        colors: ['#fbafc0', '#fff2b5', '#b8e0ff']
+                    });
+                    confetti({
+                        particleCount: 80,
+                        spread: 45,
+                        origin: { y: 0.3, x: 0.6 },
+                        colors: ['#fbafc0', '#fff2b5', '#b8e0ff']
+                    });
+                }, 300);
+            }
+
+            // initial small confetti burst when page loads (just to welcome)
+            window.addEventListener('load', () => {
+                // generate floating icons
+                generateIcons(42);  // lots of floating objects
+
+                // tiny confetti pop
+                confetti({
+                    particleCount: 40,
+                    spread: 55,
+                    origin: { y: 0.5 },
+                    colors: ['#faaac7', '#feda9e', '#a9def9', '#d0a7ff']
+                });
+
+                // another one after 0.5s
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 35,
+                        spread: 70,
+                        origin: { y: 0.5, x: 0.3 },
+                        colors: ['#ffbbc1', '#ffd5b0', '#b2f0e5']
+                    });
+                }, 500);
+            });
+
+            // === button interactions ===
+            const confettiBtn = document.getElementById('confettiBtn');
+            const wishBtn = document.getElementById('wishBtn');
+            const specialWishDiv = document.getElementById('specialWish');
+
+            confettiBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                shootConfettiBurst();  // massive confetti
+                // also add a little surprise: extra burst after 0.2s
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 60,
+                        spread: 50,
+                        origin: { y: 0.7, x: 0.2 },
+                        colors: ['#fcd5ce', '#f9dcc4', '#cfbaf0', '#a3c4f3']
+                    });
+                }, 200);
+            });
+
+            wishBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // toggle special wish box with animation
+                specialWishDiv.classList.toggle('show');
+
+                // fire small confetti to highlight the wish
+                confetti({
+                    particleCount: 50,
+                    spread: 45,
+                    origin: { y: 0.7, x: 0.5 },
+                    colors: ['#f9acbc', '#fee599', '#cfb0ff', '#ade0db']
+                });
+
+                // if the box becomes visible, maybe also change icon or something
+                if (specialWishDiv.classList.contains('show')) {
+                    // add a little sparkle inside wish box
+                    const icons = specialWishDiv.querySelectorAll('i');
+                    icons.forEach(icon => icon.style.animation = 'heartbeat 1.2s infinite');
+                }
+            });
+
+            // optional: double click on card fires secret confetti
+            document.querySelector('.card-glass').addEventListener('dblclick', function () {
+                for (let i = 0; i < 4; i++) {
+                    setTimeout(() => {
+                        confetti({
+                            particleCount: 50,
+                            spread: 80,
+                            origin: { x: i * 0.3, y: 0.5 },
+                        });
+                    }, i * 120);
+                }
+            });
+
+            // on window resize, we don't regenerate icons, but it's ok, they keep positions
+            // however if we want to avoid icons stuck outside new view? they are % based, so fine.
+
+        })();
+    </script>
+
+    <!-- small extra style to ensure floating container is truly behind -->
+    <style>
+        /* ensure icons don't overlay card interaction */
+        .floating-bg {
+            pointer-events: none;
+        }
+
+        .birthday-card {
+            pointer-events: none;
+        }
+
+        .card-glass {
+            pointer-events: auto;
+        }
+
+        /* glass card text selection prettiness */
+        ::selection {
+            background: #ffb7c5;
+            color: #2d0e1a;
+        }
+    </style>
+</body>
+
+</html>
