@@ -91,14 +91,18 @@
         }
 
         /* main content card (above background) */
-        .birthday-image {
-    width: 180px !important;
-    height: 180px !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-    display: block;
-    margin: 20px auto;
-    box-shadow: 0 10px 25px rgba(255, 100, 150, 0.4);
+       .birthday-card {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;   /* stack items vertically */
+    align-items: center;      /* horizontal center */
+    justify-content: center;  /* vertical center */
+
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
 }
 
         .card-glass {
@@ -178,13 +182,13 @@
             }
         }
 
-       .birthday-image {
-    width: 180px !important;
-    height: 180px !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
+     .birthday-image {
+    width: 200px;
+    height: 260px;  /* oval look */
+    object-fit: cover;
+    border-radius: 50%;
     display: block;
-    margin: 20px auto;
+    margin: 0 auto 20px auto; /* center + space below */
     box-shadow: 0 10px 25px rgba(255, 100, 150, 0.4);
 }
         .sub-message {
@@ -358,14 +362,16 @@
     <!-- background floating icons container (filled by js) -->
     <div class="floating-bg" id="floatingBg"></div>
 
-    <div class="card-glass">
-    
+  <div class="birthday-card">
 
-    <!-- IMAGE HERE -->
     <img src="khushboo.jpg" class="birthday-image" alt="Khushboo">
 
-    <div class="sub-message">
+    <div class="card-glass">
+        <h1>Happy Birthday <span class="name-highlight">Khushboo</span></h1>
+        ...
+    </div>
 
+</div>
     <!-- main birthday card -->
     <div class="birthday-card">
         <div class="card-glass">
