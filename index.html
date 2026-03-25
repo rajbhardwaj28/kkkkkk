@@ -91,17 +91,13 @@
         }
 
         /* main content card (above background) */
-       .birthday-card {
-    position: relative;
-    z-index: 10;
-
+     .birthday-card {
     display: flex;
-    flex-direction: column;   /* stack items vertically */
-    align-items: center;      /* horizontal center */
-    justify-content: center;  /* vertical center */
-
+    flex-direction: column;
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
     min-height: 100vh;
-    text-align: center;
+    gap: 20px;                 /* space between image & card */
     padding: 20px;
 }
 
@@ -185,12 +181,12 @@
         }
 
      .birthday-image {
-    width: 200px;
-    height: 260px;  /* oval look */
+    width: 160px;     /* smaller & balanced */
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
     display: block;
-    margin: 0 auto 20px auto; /* center + space below */
+    margin: 0;
     box-shadow: 0 10px 25px rgba(255, 100, 150, 0.4);
 }
         .sub-message {
@@ -370,7 +366,6 @@
 
     <div class="card-glass">
        
-        ...
     </div>
 
 </div>
