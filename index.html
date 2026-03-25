@@ -91,17 +91,15 @@
         }
 
         /* main content card (above background) */
-        .birthday-card {
-            position: relative;
-            z-index: 10;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            pointer-events: none;
-            /* allow clicks through to buttons but container doesn't block */
-        }
+        .birthday-card .birthday-image {
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 10px 25px rgba(255, 100, 150, 0.4);
+}
 
         .card-glass {
             max-width: 800px;
